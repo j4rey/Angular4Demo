@@ -1,0 +1,23 @@
+<p>
+  pagination works!
+  <br>
+  total: {{_total}}
+  <br>
+  currentpage: {{_currentpage}}
+  <br>
+  count: {{_count}}
+  <br>
+  maxNumberofPaginationToShow : {{maxNumberofPaginationToShow}}
+<br>
+<input type="button" (click)="GoToPage(1)" 
+[disabled]="_currentpage===1"
+value="First"/>
+  <input type="button" (click)="GoToPage(_currentpage-1)" [disabled]="_currentpage===1" value="Prev"/>
+  <input type="button" *ngFor="let i of GetPages()" value="{{i}}" (click)="GoToPage(i)"
+    [disabled]="i===_currentpage"
+  >
+  <input type="button" (click)="GoToPage(_currentpage+1)" [disabled]="_currentpage===GetMaxPage()" value="Next"/>
+  <input type="button" (click)="GoToPage(GetMaxPage())"
+    [disabled]="_currentpage===(GetMaxPage())"
+  value="Last"/>
+</p>

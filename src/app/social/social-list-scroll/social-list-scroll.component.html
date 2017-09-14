@@ -1,0 +1,45 @@
+<style>
+.cust-table-cont { width:100%; overflow-x:auto; } 
+.cust-table-cont .table-responsive { width:1120px;  }
+.cust-table { table-layout:fixed;  } 
+.cust-table thead, .cust-table tbody { 
+display: block;
+}
+.cust-table tbody{
+  max-height: 450px;
+
+height: 450px;
+}
+.cust-table tbody { max-height:620px; overflow-y:auto; } 
+</style>
+<div class="row">
+  <div class="col-sm-12" >
+    <div class="cust-table-cont" >
+      <div class="table-responsive" >
+        <table border="0" class="table cust-table" >
+          <thead>
+            <tr>
+              <th class="col-xs-1">index</th>
+              <th class="col-xs-2">ID</th>
+              <th class="col-xs-3">Post Name</th>
+              <th class="col-xs-3">Post Content</th>
+              <th class="col-xs-1">Post Type</th>
+              <th class="col-xs-2">Date Entered</th>
+            </tr>
+          </thead>
+          <tbody scroller (everySecond)="functionFromDirective($event)">
+            <tr *ngFor="let s of socials" >
+              <td class="col-xs-1">{{s.indexCount}}</td>
+              <td class="col-xs-2">{{s.ID}}</td>
+              <td class="col-xs-3">{{s.POST_NAME}}</td>
+              <td class="col-xs-3">{{s.POST_CONTENT}}</td>
+              <td class="col-xs-1">{{s.POST_TYPE}}</td>
+              <td class="col-xs-2">{{s.DATE_ENTERED}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<p appHighlight>current Page : {{_page}}</p>
