@@ -13,8 +13,7 @@ export class LoginService{
         console.log("Cookie:");
         try{
         console.log(JSON.parse(this.storage.getItem(environment.userStorageKey)));
-        //request web api to check if user exists
-
+        //request web api to check if user exists if the user is logged in 
         this.currentUser = JSON.parse(this.storage.getItem(environment.userStorageKey));
         }catch(exception){}
     }

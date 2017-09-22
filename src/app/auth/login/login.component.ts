@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { environment } from './../../../environments/environment';
 import { NgForm } from '@angular/forms/';
-import { Router } from "@angular/router";
+import { Router, Params, ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Rx";
 
@@ -12,12 +12,7 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy,AfterViewChecked {
-  ngAfterViewChecked(): void {
-    this.loginform.form.patchValue({
-      username : this.loginService.getCurrentUserName()
-    });
-  }
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('f') loginform: NgForm;
   @ViewChild('loginbtn') loginbtn: ElementRef;
   
@@ -27,9 +22,25 @@ export class LoginComponent implements OnInit, OnDestroy,AfterViewChecked {
   
   loginSubscription: Subscription;
   
-  constructor(public loginService: LoginService, public router: Router, public storage:StorageService) { }
+  txtUserName:string = "";
+
+  returnUrl = "";
+
+  constructor(public loginService: LoginService, public router: Router, public storage:StorageService,
+    private route: ActivatedRoute
+  ) { 
+    this.txtUserName = this.loginService.getCurrentUserName();
+  }
   
   ngOnInit() {
+    this.route.queryParams.forEach((params: Params) => {
+      if((params['returnurl']+"")=="undefined"){
+        
+      }
+      else{
+        this.returnUrl = params['returnurl']+""
+      }
+    });
   }
   
   ngOnDestroy(): void {
@@ -51,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy,AfterViewChecked {
 
   patchVal(){
     this.loginform.form.patchValue({
-      username : "hello"
+      username :  this.loginService.getCurrentUserName()
     });
   }
 
@@ -60,14 +71,23 @@ export class LoginComponent implements OnInit, OnDestroy,AfterViewChecked {
       this.isLoggingIn = true;
       this.loginAttemptCount++;
       this.loginSubscription = this.loginService.login(
-        this.loginform.value.username,
+        //this.loginform.value.username,
+        this.txtUserName,
         this.loginform.value.password
       ).subscribe(
         (data) => {
           this.isLoggingIn = false;
           if (data == environment.loginSuccess) {
             this.isLoggingFailed = false;
-            console.log("success")
+            console.log("success" + this.returnUrl);
+
+            if((this.returnUrl)!="undefined"){
+              console.log("undefined return url");
+               this.router.navigate([this.returnUrl]);
+             }
+            else{
+              this.router.navigate(['']);
+            }
           }
           else {
             this.isLoggingFailed = true;
