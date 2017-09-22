@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpModule } from "@angular/http";
 
 
+//import { AuthGuard } from './auth/auth.guard';
 import { AppComponent } from './app.component';
 import { SocialModule } from './social/social.module';
 import { PaginationModule } from './core/pagination/pagination.module';
@@ -38,7 +39,9 @@ const appRoutes: Routes = [
     SocialModule,
     PaginationModule
   ],
-  providers: [LoginService,StorageService],
+  providers: [LoginService,StorageService
+    //,AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
