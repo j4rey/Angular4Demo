@@ -16,14 +16,14 @@ export class PaginationComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    console.log("max:"+this.maxNumberofPaginationToShow);
+    //console.log("max:"+this.maxNumberofPaginationToShow);
     if(this.maxNumberofPaginationToShow%2!=1){
       this.maxNumberofPaginationToShow = this.maxNumberofPaginationToShow+1;
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    //console.log(changes);
     if (changes._currentpage != undefined) {
       this._currentpage = changes._currentpage.currentValue;
       this.GetPages();
@@ -31,7 +31,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   GetPages() {
-    console.log('getpages()');
+    //console.log('getpages()');
     var maxpages = this.GetMaxPage();
     var numbers: number[] = [];
 

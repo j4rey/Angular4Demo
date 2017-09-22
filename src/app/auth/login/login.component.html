@@ -1,0 +1,19 @@
+<h2>Login</h2>
+<form (ngSubmit)="onSubmit()" #f="ngForm" >
+<div class="form-group">
+  <label for="username">User Name</label>
+  <input type="text" id="username" class="form-control" name="username" ngModel>
+</div>
+
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" class="form-control" name="password" ngModel>
+</div>
+
+<label style="color:red" *ngIf='this.loginAttemptCount>0 && this.isLoggingFailed == true'>User name and password does not exist</label>
+<br>
+<button #loginbtn [disabled]='this.isLoggingIn' class="btn btn-primary" type="submit">Submit</button>
+</form>
+<button (click)="ShowCookie()">Show Cookie</button>
+<button (click)="DeleteCookie()">Delete Cookie</button>
+<button (click)="patchVal()">Patch</button>
