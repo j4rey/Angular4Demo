@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './../../auth/login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   private _fetchrows: number = 10;
   private _total: number =50;
 
-  constructor() { 
+  constructor(public loginService:LoginService) { 
     
   }
 
