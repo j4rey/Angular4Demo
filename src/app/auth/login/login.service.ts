@@ -26,6 +26,11 @@ export class LoginService{
         return this.currentUser == null?false: this.currentUser.loginstatus==environment.userLoggedIn;
     }
 
+    // getUserBTOA(){
+    //     console.log("btoa"+ this.currentUser.getBTOA());
+    //     return this.currentUser == null? "": this.currentUser.getBTOA();
+    // }
+
     logout(){
         this.currentUser.loginstatus = environment.userLoggedOut;
         //this.storage.deleteItem(environment.userStorageKey);

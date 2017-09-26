@@ -1,0 +1,24 @@
+<div class="row">
+  <style>
+    #offers {
+        margin-top: 0.5%;
+        height: 450px;
+        overflow-y: auto;
+        background: #F6F6F6 none repeat scroll 0% 0%;
+    } 
+    </style>
+  <nav id='menus' class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <!-- <a href="/admin/users">Manage Users <span class="sr-only">(current)</span></a> -->
+        <a class="nav-link active" routerLink="/admin/users">Manage Users</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" routerLink="/admin/roles">Manage Roles</a>
+      </li>
+    </ul>
+  </nav>
+<div>
+  <router-outlet></router-outlet>
+</div>
+</div>

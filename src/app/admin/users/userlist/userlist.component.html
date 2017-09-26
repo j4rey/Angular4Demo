@@ -1,0 +1,31 @@
+
+  <a routerLink="/admin/users/add">Add Users</a>
+  <div class="row">
+    
+    <div class="col-sm-9" >
+      <div class="cust-table-cont" >
+        <div class="table-responsive" >
+          <table border="0" class="table cust-table" >
+            <thead>
+              <tr>
+                <th class="col-xs-1">Id</th>
+                <th class="col-xs-2">email</th>
+                <th class="col-xs-2">password</th>
+                <th class="col-xs-2">username</th>
+                <th class="col-xs-2">action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of users" >
+                <td class="col-xs-1">{{s.Id}}</td>
+                <td class="col-xs-2">{{s.email}}</td>
+                <td class="col-xs-2">{{s.password}}</td>
+                <td class="col-xs-2">{{s.username}}</td>
+                <td class="col-xs-2"><a class="nav-link active" [routerLink]="['/admin/users/addrole']" [queryParams]="{id: s.Id}">Add Role</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

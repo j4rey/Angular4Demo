@@ -5,7 +5,8 @@ export class User{
                 public loginstatus : string
     ){}
 
-    getBTOA(){
+    getBTOA():string{
+        console.log("username "+this.username)
         return btoa(this.username+":"+this.password);
     }
 }
