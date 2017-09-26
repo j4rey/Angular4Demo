@@ -1,0 +1,14 @@
+<h2>Add Role</h2>
+<div class="row">
+    
+    <div class="col-sm-9" >
+<form (ngSubmit)="onSubmit()" #roleaddform="ngForm">
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" name="name" ngModel>
+      </div>
+  <br>
+  <button #savebtn class="btn btn-primary" type="submit">Submit</button>
+</form>
+    </div></div>

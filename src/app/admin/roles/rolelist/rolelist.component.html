@@ -1,0 +1,25 @@
+
+  <a routerLink="/admin/roles/add">Add Role</a>
+  <div class="row">
+    
+    <div class="col-sm-9" >
+      <div class="cust-table-cont" >
+        <div class="table-responsive" >
+          <table border="0" class="table cust-table" >
+            <thead>
+              <tr>
+                <th class="col-xs-1">Id</th>
+                <th class="col-xs-3">username</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of roles" >
+                <td class="col-xs-1">{{s.Id}}</td>
+                <td class="col-xs-3">{{s.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

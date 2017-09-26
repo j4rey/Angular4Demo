@@ -1,4 +1,6 @@
+
 import { NgModule } from '@angular/core';
+import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -17,10 +19,12 @@ import { SocialListComponent } from './social/social-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { StorageService } from './auth/login/storage.service';
 import { HeaderComponent } from './core/header/header.component';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   {path:'',component:HomeComponent, pathMatch:'full'},
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'admin',component:AdminComponent}
 ];
 
 
@@ -30,6 +34,7 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     HeaderComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     SocialModule,
-    PaginationModule
+    PaginationModule,
+    AdminModule
   ],
   providers: [LoginService,StorageService
     //,AuthGuard

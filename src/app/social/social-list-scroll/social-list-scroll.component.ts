@@ -30,7 +30,7 @@ export class SocialListScrollComponent implements OnInit {
   }
 
   get(page:number, count:number){
-    this.socialService.getSocialList(page,count).subscribe((lst)=>{
+    this.socialService.getAuthSocialList(page,count).subscribe((lst)=>{
         Array.prototype.push.apply(this.socials, lst.json().SSD);
         this._page = lst.json().currentPage;
         this._total  = lst.json().totalRows;
